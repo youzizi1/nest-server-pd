@@ -36,5 +36,3 @@ lerna-debug.log*
 debug.log
 
 .vscode
-
-production.env
