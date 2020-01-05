@@ -6,6 +6,8 @@ import { ValidationPipe } from './pipes/validation.pipe';
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
+  app.setGlobalPrefix('api');
+
   const options = new DocumentBuilder()
     .setTitle('代码片段')
     .setDescription('The CodeGist API description')
