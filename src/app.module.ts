@@ -1,11 +1,10 @@
-import { Module, NestModule, MiddlewareConsumer } from '@nestjs/common';
+import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { TypeOrmConfigService } from './configs/typeorm/typeorm.service';
 import { ConfigModule } from './configs/config/config.module';
 import { ConfigService } from './configs/config/config.service';
 import { UsersModule } from './modules/users/users.module';
 import { AccountModule } from './modules/account/account.module';
-import { CorsMiddleware } from './middlewares/cors.middle';
 import { APP_INTERCEPTOR, APP_FILTER } from '@nestjs/core';
 import { TransformInterceptor } from './interceptors/transform.interceptor';
 import { ErrorFilter } from './filters/error.filter';
@@ -37,8 +36,5 @@ import { CommentsModule } from './modules/comments/comments.module';
     },
   ],
 })
-export class AppModule implements NestModule {
-  configure(consumer: MiddlewareConsumer) {
-    consumer.apply(CorsMiddleware).forRoutes('*');
-  }
+export class AppModule {
 }
