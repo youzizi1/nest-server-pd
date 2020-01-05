@@ -1,12 +1,6 @@
 version: '3'
 
 services:
-  cli:
-    image: nestjs/cli
-    working_dir: /workspace
-    volumes:
-      - .app:/workspace
-    tty: true
   mysql:
     image: mysql:${DB_VERSION}
     command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
@@ -20,9 +14,8 @@ services:
       MYSQL_PASSWORD: ${DB_PASSWORD}
     volumes:
       - ./db:/var/lib/mysql
-  nest:
-    image: node:12.8.0
-    working_dir: /home/app
+  nest-server-pd:
+    build: .
     ports:
       - 3000:3000
     depends_on:
